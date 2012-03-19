@@ -11,8 +11,15 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        clattr.cpp
+        clattr.cpp \
+    settings.cpp \
+    letter.cpp
 
-HEADERS  += clattr.h
+HEADERS  += clattr.h \
+    settings.h \
+    letter.h
 
-FORMS    += clattr.ui
+FORMS    += clattr.ui \
+    settings.ui
+
+RESOURCES +=
