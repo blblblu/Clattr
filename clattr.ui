@@ -403,8 +403,8 @@
    </property>
    <property name="iconSize">
     <size>
-     <width>32</width>
-     <height>32</height>
+     <width>22</width>
+     <height>22</height>
     </size>
    </property>
    <attribute name="toolBarArea">
@@ -424,7 +424,7 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="document-save" resource="clatter.qrc">
+    <iconset theme="document-save">
      <normaloff>:/images/document-save.png</normaloff>:/images/document-save.png</iconset>
    </property>
    <property name="text">
@@ -433,7 +433,7 @@
   </action>
   <action name="actionSaveAs">
    <property name="icon">
-    <iconset theme="document-save-as" resource="clatter.qrc">
+    <iconset theme="document-save-as">
      <normaloff>:/images/document-save-as.png</normaloff>:/images/document-save-as.png</iconset>
    </property>
    <property name="text">
@@ -442,7 +442,9 @@
   </action>
   <action name="actionQuit">
    <property name="icon">
-    <iconset theme="exit"/>
+    <iconset theme="exit">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>Quit</string>
@@ -450,7 +452,7 @@
   </action>
   <action name="actionNew">
    <property name="icon">
-    <iconset theme="document-new" resource="clatter.qrc">
+    <iconset theme="document-new">
      <normaloff>:/images/document-new.png</normaloff>:/images/document-new.png</iconset>
    </property>
    <property name="text">
@@ -459,7 +461,9 @@
   </action>
   <action name="actionAbout">
    <property name="icon">
-    <iconset theme="info"/>
+    <iconset theme="info">
+     <normaloff/>
+    </iconset>
    </property>
    <property name="text">
     <string>About</string>
@@ -467,7 +471,7 @@
   </action>
   <action name="actionOpen">
    <property name="icon">
-    <iconset theme="document-open" resource="clatter.qrc">
+    <iconset theme="document-open">
      <normaloff>:/images/document-open.png</normaloff>:/images/document-open.png</iconset>
    </property>
    <property name="text">
@@ -491,7 +495,7 @@
   </action>
   <action name="actionSettings">
    <property name="icon">
-    <iconset theme="configure" resource="clatter.qrc">
+    <iconset theme="configure">
      <normaloff>:/images/preferences-desktop.png</normaloff>:/images/preferences-desktop.png</iconset>
    </property>
    <property name="text">
@@ -519,9 +523,7 @@
   <tabstop>boolAttachement</tabstop>
   <tabstop>inputAttachement</tabstop>
  </tabstops>
- <resources>
-  <include location="clatter.qrc"/>
- </resources>
+ <resources/>
  <connections>
   <connection>
    <sender>boolAttachement</sender>
