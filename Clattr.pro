@@ -22,8 +22,7 @@ HEADERS  += clattr.h \
 FORMS    += clattr.ui \
     settings.ui
 
-RESOURCES += \
-    clatter.qrc
+RESOURCES +=
 
 OTHER_FILES += \
     README.markdown
