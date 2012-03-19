@@ -1,152 +1,152 @@
 #include "letter.h"
 
 Letter::Letter(){
-    SetContent("scrlttr2", 10, "ngerman", ALIGN_JUSTIFY, QDate::currentDate(), "", "", "", "", "", "", "", "", "", false, "");
+    SetContent(ALIGN_JUSTIFY, "", false, "", QDate::currentDate(), 10, "ngerman", "", "", "", "", "", "", "", "scrlttr2", "");
 }
 
 Letter::Letter(
-    QString newTemplate,
-    int newFontsize,
-    QString newLanguage,
-    int newAlign,
-    QDate newDate,
-    QString newSenderName,
-    QString newSenderAddress,
-    QString newReceiver,
-    QString newObject,
-    QString newOpening,
-    QString newClosing,
-    QString newSignature,
-    QString newText,
-    QString newPackages,
-    bool newBoolAttachements,
-    QString newAttachements){
+        int newAlign,
+        QString newAttachements,
+        bool newBoolAttachements,
+        QString newClosing,
+        QDate newDate,
+        int newFontsize,
+        QString newLanguage,
+        QString newObject,
+        QString newOpening,
+        QString newPackages,
+        QString newReceiver,
+        QString newSenderAddress,
+        QString newSenderName,
+        QString newSignature,
+        QString newTemplate,
+        QString newText){
     SetContent(
-        newTemplate,
-        newFontsize,
-        newLanguage,
-        newAlign,
-        newDate,
-        newSenderName,
-        newSenderAddress,
-        newReceiver,
-        newObject,
-        newOpening,
-        newClosing,
-        newSignature,
-        newText,
-        newPackages,
-        newBoolAttachements,
-        newAttachements);
+                newAlign,
+                newAttachements,
+                newBoolAttachements,
+                newClosing,
+                newDate,
+                newFontsize,
+                newLanguage,
+                newObject,
+                newOpening,
+                newPackages,
+                newReceiver,
+                newSenderAddress,
+                newSenderName,
+                newSignature,
+                newTemplate,
+                newText);
 }
 
 void Letter::SetContent(
-    QString newTemplate,
-    int newFontsize,
-    QString newLanguage,
-    int newAlign,
-    QDate newDate,
-    QString newSenderName,
-    QString newSenderAddress,
-    QString newReceiver,
-    QString newObject,
-    QString newOpening,
-    QString newClosing,
-    QString newSignature,
-    QString newText,
-    QString newPackages,
-    bool newBoolAttachements,
-    QString newAttachements){
-        chosenTemplate         = newTemplate;
-        chosenFontsize         = newFontsize;
-        chosenLanguage         = newLanguage;
-        chosenAlign            = newAlign;
-        chosenDate             = newDate;
-        chosenSenderName       = newSenderName;
-        chosenSenderAddress    = newSenderAddress;
-        chosenReceiver         = newReceiver;
-        chosenObject           = newObject;
-        chosenOpening          = newOpening;
-        chosenClosing          = newClosing;
-        chosenSignature        = newSignature;
-        chosenText             = newText;
-        chosenPackages         = newPackages;
-        chosenBoolAttachements = newBoolAttachements;
-        chosenAttachements     = newAttachements;
+        int newAlign,
+        QString newAttachements,
+        bool newBoolAttachements,
+        QString newClosing,
+        QDate newDate,
+        int newFontsize,
+        QString newLanguage,
+        QString newObject,
+        QString newOpening,
+        QString newPackages,
+        QString newReceiver,
+        QString newSenderAddress,
+        QString newSenderName,
+        QString newSignature,
+        QString newTemplate,
+        QString newText){
+    chosenAlign            = newAlign;
+    chosenAttachements     = newAttachements;
+    chosenBoolAttachements = newBoolAttachements;
+    chosenClosing          = newClosing;
+    chosenDate             = newDate;
+    chosenFontsize         = newFontsize;
+    chosenLanguage         = newLanguage;
+    chosenObject           = newObject;
+    chosenOpening          = newOpening;
+    chosenPackages         = newPackages;
+    chosenReceiver         = newReceiver;
+    chosenSenderAddress    = newSenderAddress;
+    chosenSenderName       = newSenderName;
+    chosenSignature        = newSignature;
+    chosenTemplate         = newTemplate;
+    chosenText             = newText;
 }
 
 QDataStream &operator<<(QDataStream &out, const Letter &letter){
-    out << letter.chosenTemplate
+    out << letter.chosenAlign
+        << letter.chosenAttachements
+        << letter.chosenBoolAttachements
+        << letter.chosenClosing
+        << letter.chosenDate
         << letter.chosenFontsize
         << letter.chosenLanguage
-        << letter.chosenAlign
-        << letter.chosenDate
-        << letter.chosenSenderName
-        << letter.chosenSenderAddress
-        << letter.chosenReceiver
         << letter.chosenObject
         << letter.chosenOpening
-        << letter.chosenClosing
-        << letter.chosenSignature
-        << letter.chosenText
         << letter.chosenPackages
-        << letter.chosenBoolAttachements
-        << letter.chosenAttachements;
+        << letter.chosenReceiver
+        << letter.chosenSenderAddress
+        << letter.chosenSenderName
+        << letter.chosenSignature
+        << letter.chosenTemplate
+        << letter.chosenText;
 
     return out;
 }
 
 QDataStream &operator>>(QDataStream &in, Letter &letter){
-    QString newTemplate;
+    int newAlign;
+    QString newAttachements;
+    bool newBoolAttachements;
+    QString newClosing;
+    QDate newDate;
     int newFontsize;
     QString newLanguage;
-    int newAlign;
-    QDate newDate;
-    QString newSenderName;
-    QString newSenderAddress;
-    QString newReceiver;
     QString newObject;
     QString newOpening;
-    QString newClosing;
-    QString newSignature;
-    QString newText;
     QString newPackages;
-    bool newBoolAttachements;
-    QString newAttachements;
+    QString newReceiver;
+    QString newSenderAddress;
+    QString newSenderName;
+    QString newSignature;
+    QString newTemplate;
+    QString newText;
 
-    in  >> newTemplate
+    in  >> newAlign
+        >> newAttachements
+        >> newBoolAttachements
+        >> newClosing
+        >> newDate
         >> newFontsize
         >> newLanguage
-        >> newAlign
-        >> newDate
-        >> newSenderName
-        >> newSenderAddress
-        >> newReceiver
         >> newObject
         >> newOpening
-        >> newClosing
-        >> newSignature
-        >> newText
         >> newPackages
-        >> newBoolAttachements
-        >> newAttachements;
+        >> newReceiver
+        >> newSenderAddress
+        >> newSenderName
+        >> newSignature
+        >> newTemplate
+        >> newText;
 
     letter.SetContent(
-        newTemplate,
-        newFontsize,
-        newLanguage,
-        newAlign,
-        newDate,
-        newSenderName,
-        newSenderAddress,
-        newReceiver,
-        newObject,
-        newOpening,
-        newClosing,
-        newSignature,
-        newText,
-        newPackages,
-        newBoolAttachements,
-        newAttachements);
+                newAlign,
+                newAttachements,
+                newBoolAttachements,
+                newClosing,
+                newDate,
+                newFontsize,
+                newLanguage,
+                newObject,
+                newOpening,
+                newPackages,
+                newReceiver,
+                newSenderAddress,
+                newSenderName,
+                newSignature,
+                newTemplate,
+                newText);
     return in;
 }

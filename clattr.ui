@@ -70,16 +70,6 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="1">
-            <widget class="QLineEdit" name="inputTemplate">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-            </widget>
-           </item>
            <item row="1" column="0">
             <widget class="QLabel" name="labelFontsize">
              <property name="text">
@@ -126,6 +116,23 @@
              <item>
               <property name="text">
                <string>Flush right</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QComboBox" name="inputTemplate">
+             <property name="editable">
+              <bool>true</bool>
+             </property>
+             <item>
+              <property name="text">
+               <string>scrlttr2</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>scrlttr2old</string>
               </property>
              </item>
             </widget>
@@ -411,7 +418,8 @@
     <bool>false</bool>
    </property>
    <property name="icon">
-    <iconset theme="document-save"/>
+    <iconset theme="document-save" resource="clatter.qrc">
+     <normaloff>:/images/document-save.png</normaloff>:/images/document-save.png</iconset>
    </property>
    <property name="text">
     <string>Save</string>
@@ -419,33 +427,42 @@
   </action>
   <action name="actionSaveAs">
    <property name="icon">
-    <iconset theme="document-save-as"/>
+    <iconset theme="document-save-as" resource="clatter.qrc">
+     <normaloff>:/images/document-save-as.png</normaloff>:/images/document-save-as.png</iconset>
    </property>
    <property name="text">
     <string>Save as...</string>
    </property>
   </action>
   <action name="actionQuit">
+   <property name="icon">
+    <iconset theme="exit"/>
+   </property>
    <property name="text">
     <string>Quit</string>
    </property>
   </action>
   <action name="actionNew">
    <property name="icon">
-    <iconset theme="document-new"/>
+    <iconset theme="document-new" resource="clatter.qrc">
+     <normaloff>:/images/document-new.png</normaloff>:/images/document-new.png</iconset>
    </property>
    <property name="text">
     <string>New</string>
    </property>
   </action>
   <action name="actionAbout">
+   <property name="icon">
+    <iconset theme="info"/>
+   </property>
    <property name="text">
     <string>About</string>
    </property>
   </action>
   <action name="actionOpen">
    <property name="icon">
-    <iconset theme="document-open"/>
+    <iconset theme="document-open" resource="clatter.qrc">
+     <normaloff>:/images/document-open.png</normaloff>:/images/document-open.png</iconset>
    </property>
    <property name="text">
     <string>Open...</string>
@@ -468,7 +485,8 @@
   </action>
   <action name="actionSettings">
    <property name="icon">
-    <iconset theme="configure"/>
+    <iconset theme="configure" resource="clatter.qrc">
+     <normaloff>:/images/preferences-desktop.png</normaloff>:/images/preferences-desktop.png</iconset>
    </property>
    <property name="text">
     <string>Settings...</string>
@@ -478,7 +496,6 @@
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
   <tabstop>tabWidget</tabstop>
-  <tabstop>inputTemplate</tabstop>
   <tabstop>inputFontsize</tabstop>
   <tabstop>inputLanguage</tabstop>
   <tabstop>inputAlign</tabstop>
@@ -496,7 +513,9 @@
   <tabstop>boolAttachement</tabstop>
   <tabstop>inputAttachement</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="clatter.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>boolAttachement</sender>

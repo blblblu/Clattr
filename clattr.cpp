@@ -25,37 +25,43 @@ Clattr::~Clattr(){
     delete settings;
 }
 
-void Clattr::setUiData(Letter &letter){
-    // document settings
-    // // document
-    ui->inputTemplate->setText(letter.chosenTemplate);
-    ui->inputFontsize->setValue(letter.chosenFontsize);
-    ui->inputLanguage->setText(letter.chosenLanguage);
-    ui->inputAlign->setCurrentIndex(letter.chosenAlign);
-    // // time
-    ui->inputDate->setDate(letter.chosenDate);
-    // content
-    // // addresses
-    ui->inputSendername->setText(letter.chosenSenderName);
-    ui->inputSenderaddress->setPlainText(letter.chosenSenderAddress);
-    ui->inputReceiver->setPlainText(letter.chosenReceiver);
-    // // sentences
-    ui->inputObject->setText(letter.chosenObject);
-    ui->inputOpening->setText(letter.chosenOpening);
-    ui->inputClosing->setText(letter.chosenClosing);
-    ui->inputSignature->setPlainText(letter.chosenSignature);
-    // // text
-    ui->inputText->setPlainText(letter.chosenText);
-    // extras
-    // // packages
-    ui->inputPackages->setPlainText(letter.chosenPackages);
-    // // attachements
-    ui->boolAttachement->setEnabled(letter.chosenBoolAttachements);
-    ui->inputAttachement->setPlainText(letter.chosenAttachements);
+Letter Clattr::uiData(){
+    return Letter(
+                ui->inputAlign->currentIndex(),
+                ui->inputAttachement->document()->toPlainText(),
+                ui->boolAttachement->checkState(),
+                ui->inputClosing->text(),
+                ui->inputDate->date(),
+                ui->inputFontsize->value(),
+                ui->inputLanguage->text(),
+                ui->inputObject->text(),
+                ui->inputOpening->text(),
+                ui->inputPackages->document()->toPlainText(),
+                ui->inputReceiver->document()->toPlainText(),
+                ui->inputSenderaddress->document()->toPlainText(),
+                ui->inputSendername->text(),
+                ui->inputSignature->document()->toPlainText(),
+                ui->inputTemplate->currentText(),
+                ui->inputText->document()->toPlainText());
 }
 
-void Clattr::showSettings(){
-    settings->exec();
+void Clattr::setUiData(Letter &letter){
+    ui->inputAlign->setCurrentIndex(letter.chosenAlign);
+    ui->inputAttachement->setPlainText(letter.chosenAttachements);
+    ui->boolAttachement->setChecked(letter.chosenBoolAttachements);
+    ui->inputClosing->setText(letter.chosenClosing);
+    ui->inputDate->setDate(letter.chosenDate);
+    ui->inputFontsize->setValue(letter.chosenFontsize);
+    ui->inputLanguage->setText(letter.chosenLanguage);
+    ui->inputObject->setText(letter.chosenObject);
+    ui->inputOpening->setText(letter.chosenOpening);
+    ui->inputPackages->setPlainText(letter.chosenPackages);
+    ui->inputReceiver->setPlainText(letter.chosenReceiver);
+    ui->inputSenderaddress->setPlainText(letter.chosenSenderAddress);
+    ui->inputSendername->setText(letter.chosenSenderName);
+    ui->inputSignature->setPlainText(letter.chosenSignature);
+    ui->inputTemplate->setEditText(letter.chosenTemplate);
+    ui->inputText->setPlainText(letter.chosenText);
 }
 
 void Clattr::showAbout() {
@@ -77,4 +83,8 @@ void Clattr::showLicense() {
                       "You should have received a copy of the GNU General Public License along with this program.  If not, see <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>.");
 
     QMessageBox::about(this, title, text);
+}
+
+void Clattr::showSettings(){
+    settings->exec();
 }

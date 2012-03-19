@@ -1,9 +1,9 @@
 #ifndef LETTER_H
 #define LETTER_H
 
+#include <QDataStream>
 #include <QDate>
 #include <QString>
-#include <QDataStream>
 
 #define ALIGN_JUSTIFY 0
 #define ALIGN_LEFT    1
@@ -14,63 +14,57 @@ class Letter
 public:
     Letter();
     Letter(
-        QString newTemplate,
-        int newFontsize,
-        QString newLanguage,
-        int newAlign,
-        QDate newDate,
-        QString newSenderName,
-        QString newSenderAddress,
-        QString newReceiver,
-        QString newObject,
-        QString newOpening,
-        QString newClosing,
-        QString newSignature,
-        QString newText,
-        QString newPackages,
-        bool newBoolAttachements,
-        QString newAttachements);
+            int newAlign,
+            QString newAttachements,
+            bool newBoolAttachements,
+            QString newClosing,
+            QDate newDate,
+            int newFontsize,
+            QString newLanguage,
+            QString newObject,
+            QString newOpening,
+            QString newPackages,
+            QString newReceiver,
+            QString newSenderAddress,
+            QString newSenderName,
+            QString newSignature,
+            QString newTemplate,
+            QString newText);
+
     void SetContent(
-        QString newTemplate,
-        int newFontsize,
-        QString newLanguage,
-        int newAlign,
-        QDate newDate,
-        QString newSenderName,
-        QString newSenderAddress,
-        QString newReceiver,
-        QString newObject,
-        QString newOpening,
-        QString newClosing,
-        QString newSignature,
-        QString newText,
-        QString newPackages,
-        bool newBoolAttachements,
-        QString newAttachements);
-    QString chosenTemplate;
+            int newAlign,
+            QString newAttachements,
+            bool newBoolAttachements,
+            QString newClosing,
+            QDate newDate,
+            int newFontsize,
+            QString newLanguage,
+            QString newObject,
+            QString newOpening,
+            QString newPackages,
+            QString newReceiver,
+            QString newSenderAddress,
+            QString newSenderName,
+            QString newSignature,
+            QString newTemplate,
+            QString newText);
+
+    int chosenAlign;
+    QString chosenAttachements;
+    bool chosenBoolAttachements;
+    QString chosenClosing;
+    QDate chosenDate;
     int chosenFontsize;
     QString chosenLanguage;
-    int chosenAlign;
-    // // time
-    QDate chosenDate;
-    // content
-    // // addresses
-    QString chosenSenderName;
-    QString chosenSenderAddress;
-    QString chosenReceiver;
-    // // sentences
     QString chosenObject;
     QString chosenOpening;
-    QString chosenClosing;
-    QString chosenSignature;
-    // // text
-    QString chosenText;
-    // extras
-    // // packages
     QString chosenPackages;
-    // // attachements
-    bool chosenBoolAttachements;
-    QString chosenAttachements;
+    QString chosenReceiver;
+    QString chosenSenderAddress;
+    QString chosenSenderName;
+    QString chosenSignature;
+    QString chosenTemplate;
+    QString chosenText;
 };
 
 QDataStream &operator<<(QDataStream &out, const Letter &letter);

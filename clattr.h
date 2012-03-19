@@ -21,13 +21,14 @@ public:
 private:
     Ui::Clattr *ui;
     Settings *settings;
+    Letter uiData();
     void setUiData(Letter &letter);
 
 private slots:
-    void showSettings();
     void showAbout();
     void showAboutQt();
     void showLicense();
+    void showSettings();
 };
 
 #endif // CLATTR_H
