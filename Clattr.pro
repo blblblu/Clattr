@@ -23,3 +23,6 @@ FORMS    += clattr.ui \
     settings.ui
 
 RESOURCES +=
+
+OTHER_FILES += \
+    README.markdown
