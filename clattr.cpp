@@ -65,8 +65,8 @@ void Clattr::setUiData(Letter &letter){
 }
 
 void Clattr::showAbout() {
-    QString title = tr ("About Clattr");
-    QString text = tr ("Easily create LaTeX letters<br />(c) 2012 Sebastian Schulz");
+    QString title = tr("About Clattr");
+    QString text = tr("Easily create LaTeX letters<br />(c) 2012 Sebastian Schulz");
 
     QMessageBox::about(this, title, text);
 }

@@ -31,7 +31,7 @@ public:
             QString newTemplate,
             QString newText);
 
-    void SetContent(
+    void setContent(
             int newAlign,
             QString newAttachements,
             bool newBoolAttachements,

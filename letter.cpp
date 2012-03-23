@@ -1,7 +1,7 @@
 #include "letter.h"
 
 Letter::Letter(){
-    SetContent(ALIGN_JUSTIFY, "", false, "", QDate::currentDate(), 10, "ngerman", "", "", "", "", "", "", "", "scrlttr2", "");
+    setContent(ALIGN_JUSTIFY, "", false, "", QDate::currentDate(), 10, "ngerman", "", "", "", "", "", "", "", "scrlttr2", "");
 }
 
 Letter::Letter(
@@ -21,7 +21,7 @@ Letter::Letter(
         QString newSignature,
         QString newTemplate,
         QString newText){
-    SetContent(
+    setContent(
                 newAlign,
                 newAttachements,
                 newBoolAttachements,
@@ -40,7 +40,7 @@ Letter::Letter(
                 newText);
 }
 
-void Letter::SetContent(
+void Letter::setContent(
         int newAlign,
         QString newAttachements,
         bool newBoolAttachements,
@@ -131,7 +131,7 @@ QDataStream &operator>>(QDataStream &in, Letter &letter){
         >> newTemplate
         >> newText;
 
-    letter.SetContent(
+    letter.setContent(
                 newAlign,
                 newAttachements,
                 newBoolAttachements,
