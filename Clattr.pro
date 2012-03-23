@@ -25,4 +25,6 @@ FORMS    += clattr.ui \
 RESOURCES +=
 
 OTHER_FILES += \
-    README.markdown
+    README.markdown \
+    templates/scrlttr2/template.tex \
+    templates/scrlttr2old/template.tex

@@ -13,11 +13,13 @@ Clattr::Clattr(QWidget *parent) :
 
     settings = new Settings(this);
 
-    connect(ui->actionSettings, SIGNAL(triggered()),this, SLOT(showSettings()));
-
     connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
-    connect(ui->actionLicense, SIGNAL(triggered()), this, SLOT(showLicense()));
     connect(ui->actionAboutQt, SIGNAL(triggered()), this, SLOT(showAboutQt()));
+    connect(ui->actionExportAsTex, SIGNAL(triggered()), this, SLOT(exportAsTex()));
+    connect(ui->actionLicense, SIGNAL(triggered()), this, SLOT(showLicense()));
+    connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(openLetter()));
+    connect(ui->actionSaveAs, SIGNAL(triggered()), this, SLOT(saveLetterAs()));
+    connect(ui->actionSettings, SIGNAL(triggered()),this, SLOT(showSettings()));
 }
 
 Clattr::~Clattr(){
@@ -62,6 +64,47 @@ void Clattr::setUiData(Letter &letter){
     ui->inputSignature->setPlainText(letter.chosenSignature);
     ui->inputTemplate->setEditText(letter.chosenTemplate);
     ui->inputText->setPlainText(letter.chosenText);
+}
+
+void Clattr::exportAsTex(){
+    QString pathToFile = QFileDialog::getSaveFileName(this, tr("Export letter as *.tex"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("TeX document (*.tex)"));
+    QFile file(pathToFile);
+    if(file.open(QIODevice::WriteOnly | QIODevice::Text)){
+        QTextStream out(&file);
+        out << uiData().toTex(QApplication::applicationDirPath() + "/templates");
+        file.close();
+    } else {
+        qWarning() << tr("Error: file couldn't be saved");
+    }
+    // ask user wheter he wants to run LaTeX
+    int reply = QMessageBox::question(0, tr("Run LaTeX"), tr("Do you want to run LaTeX?"), QMessageBox::Yes, QMessageBox::No);
+    system(settings->latexCommand().toAscii() + " --halt-on-error " + pathToFile.toAscii());
+}
+
+void Clattr::openLetter(){
+    QString pathToFile = QFileDialog::getOpenFileName(this, tr("Open letter"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Clattr files (*.cltr)"));
+    QFile file(pathToFile);
+    if(file.open(QIODevice::ReadOnly)){
+        QDataStream in(&file);
+        Letter letter;
+        in >> letter;
+        file.close();
+        setUiData(letter);
+    } else {
+        qWarning() << tr("Error: Chosen file not found").toAscii();
+    }
+}
+
+void Clattr::saveLetterAs(){
+    QString pathToFile = QFileDialog::getSaveFileName(this, tr("Save letter as"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Clattr files (*.cltr)"));
+    QFile file(pathToFile);
+    if(file.open(QIODevice::WriteOnly)){
+        QDataStream out(&file);
+        out << uiData();
+        file.close();
+    } else {
+        qWarning() << tr("Error: file couldn't be saved");
+    }
 }
 
 void Clattr::showAbout() {

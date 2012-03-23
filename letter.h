@@ -3,6 +3,8 @@
 
 #include <QDataStream>
 #include <QDate>
+#include <QFile>
+#include <QIODevice>
 #include <QString>
 
 #define ALIGN_JUSTIFY 0
@@ -48,6 +50,8 @@ public:
             QString newSignature,
             QString newTemplate,
             QString newText);
+
+    QString toTex(QString templateDir);
 
     int chosenAlign;
     QString chosenAttachements;

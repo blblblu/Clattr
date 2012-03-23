@@ -38,6 +38,44 @@ Letter::Letter(
                 newSignature,
                 newTemplate,
                 newText);
+    ;
+}
+
+QString Letter::toTex(QString templateDir){
+    QString texString;
+
+    QFile templateFile(templateDir + "/" + chosenTemplate + "/template.tex");
+    if(!templateFile.open(QIODevice::ReadOnly | QIODevice::Text)){
+        throw 1;
+    } else {
+        texString = templateFile.readAll();
+    }
+    templateFile.close();
+
+    // replace the dummies with the information of the given letter
+    if(chosenAlign == ALIGN_LEFT){
+        texString.replace("%<align>", "\\\\flushleft");
+    } else if(chosenAlign == ALIGN_RIGHT) {
+        texString.replace("%<align>", "\\\\flushright");
+    }
+    if(chosenBoolAttachements){
+        texString.replace("%<boolattachement>", "");
+        texString.replace("%<attachement>", chosenAttachements);
+    }
+    texString.replace("%<closing>", chosenClosing);
+    texString.replace("%<date>", chosenDate.toString("dd.MM.yyyy"));
+    texString.replace("%<fontsize>", QString().setNum(chosenFontsize));
+    texString.replace("%<language>", chosenLanguage);
+    texString.replace("%<object>", chosenObject);
+    texString.replace("%<opening>", chosenOpening);
+    texString.replace("%<packages>", chosenPackages);
+    texString.replace("%<receiver>", chosenReceiver);
+    texString.replace("%<senderaddress>", chosenSenderAddress);
+    texString.replace("%<sendername>", chosenSenderName);
+    texString.replace("%<signature>", chosenSignature);
+    texString.replace("%<text>", chosenText);
+
+    return texString;
 }
 
 void Letter::setContent(
