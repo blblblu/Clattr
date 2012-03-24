@@ -11,21 +11,21 @@ class Settings;
 
 class Settings : public QDialog
 {
-    Q_OBJECT
-    
-public:
-    explicit Settings(QWidget *parent = 0);
-    ~Settings();
+	Q_OBJECT
 
-    QString latexCommand();
-    
+public:
+	explicit Settings(QWidget *parent = 0);
+	~Settings();
+
+	QString latexCommand();
+
 private:
-    Ui::Settings *ui;
-    QSettings *qSettings;
+	Ui::Settings *ui;
+	QSettings *qSettings;
 
 private slots:
-    void acceptSettings();
-    void rejectSettings();
+	void acceptSettings();
+	void rejectSettings();
 };
 
 #endif // SETTINGS_H

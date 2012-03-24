@@ -548,12 +548,12 @@
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>115</x>
-     <y>102</y>
+     <x>134</x>
+     <y>364</y>
     </hint>
     <hint type="destinationlabel">
-     <x>115</x>
-     <y>102</y>
+     <x>134</x>
+     <y>457</y>
     </hint>
    </hints>
   </connection>
