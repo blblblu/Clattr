@@ -7,7 +7,6 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QIODevice>
-//#include <QKeyEvent>
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QtDebug>
@@ -20,24 +19,24 @@ namespace Ui {
 class Clattr;
 }
 
-/**
- * @brief Clattr class (main window)
- **/
+/*!
+ * \brief Clattr class (main window)
+ */
 class Clattr : public QMainWindow
 {
 	Q_OBJECT
 
 public:
-  /**
-	 * @brief Constructor
+	/*!
+	 * \brief Constructor
    *
-	 * @param parent ... default is 0
-   **/
+	 * \param parent ... default is 0
+	 */
   explicit Clattr(QWidget *parent = 0);
-  /**
-	 * @brief Destructor
+	/*!
+	 * \brief Destructor
    *
-   **/
+	 */
   ~Clattr();
 
 private:
@@ -48,6 +47,7 @@ private:
 
 private slots:
 	void exportAsTex();
+	void newFile();
 	void openLetter();
   void saveLetterAs();
   void showAbout();

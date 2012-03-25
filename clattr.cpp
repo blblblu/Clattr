@@ -7,7 +7,7 @@ Clattr::Clattr(QWidget *parent) :
 {
 	ui->setupUi(this);
 
-	Letter letter = Letter();
+	Letter letter;
 
 	setUiData(letter);
 
@@ -17,6 +17,7 @@ Clattr::Clattr(QWidget *parent) :
 	connect(ui->actionAboutQt, SIGNAL(triggered()), this, SLOT(showAboutQt()));
 	connect(ui->actionExportAsTex, SIGNAL(triggered()), this, SLOT(exportAsTex()));
 	connect(ui->actionLicense, SIGNAL(triggered()), this, SLOT(showLicense()));
+	connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
 	connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(openLetter()));
 	connect(ui->actionSaveAs, SIGNAL(triggered()), this, SLOT(saveLetterAs()));
 	connect(ui->actionSettings, SIGNAL(triggered()),this, SLOT(showSettings()));
@@ -95,6 +96,11 @@ void Clattr::exportAsTex() {
 	} else {
 		QMessageBox::warning(this, tr("Error"), tr("*.tex file couldn't be saved"));
 	}
+}
+
+void Clattr::newFile(){
+	Letter letter;
+	setUiData(letter);
 }
 
 void Clattr::openLetter() {
