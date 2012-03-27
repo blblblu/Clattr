@@ -11,8 +11,6 @@ Clattr::Clattr(QWidget *parent) :
 
 	setUiData(letter);
 
-	settings = new Settings(this);
-
 	connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
 	connect(ui->actionAboutQt, SIGNAL(triggered()), this, SLOT(showAboutQt()));
 	connect(ui->actionExportAsTex, SIGNAL(triggered()), this, SLOT(exportAsTex()));
@@ -25,7 +23,6 @@ Clattr::Clattr(QWidget *parent) :
 
 Clattr::~Clattr() {
 	delete ui;
-	delete settings;
 }
 
 Letter Clattr::uiData() {
@@ -80,12 +77,12 @@ void Clattr::exportAsTex() {
 			int reply = QMessageBox::question(this, tr("Run LaTeX"), tr("Do you want to run LaTeX?"), QMessageBox::Yes, QMessageBox::No);
 			if(reply == QMessageBox::Yes){
 				QString outputDirectory = QFileDialog::getExistingDirectory(this, tr("Choose output directory"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation));
-				int fail = system(settings->latexCommand().toAscii() + " --halt-on-error --output-directory=" + outputDirectory.toAscii() + " " + pathToFile.toAscii());
+				int fail = system(QSettings().value("latex/latexcommand").toString().toAscii() + " --halt-on-error --output-directory=" + outputDirectory.toAscii() + " " + pathToFile.toAscii());
 				if(fail){
 					QMessageBox::warning(this, tr("Error"), tr("Couldn't create output file"));
 				}
 			}
-		// catch exceptions thrown by Letter::toTex()
+			// catch exceptions thrown by Letter::toTex()
 		} catch(int e){
 			switch(e){
 			case 1:
@@ -109,7 +106,17 @@ void Clattr::openLetter() {
 	if(file.open(QIODevice::ReadOnly)) {
 		QDataStream in(&file);
 		Letter letter;
-		in >> letter;
+
+		try{
+			in >> letter;
+		} catch(int e){
+			switch(e){
+			case 2:
+				QMessageBox::warning(0, tr("Error"), tr("Bad file type"));
+				break;
+			}
+		}
+
 		file.close();
 		setUiData(letter);
 	} else {
@@ -143,13 +150,14 @@ void Clattr::showAboutQt() {
 void Clattr::showLicense() {
 	QString title = tr("License");
 	QString text = tr("Copyright (C) 2012  Sebastian Schulz<br />"
-										"This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br />"
-										"This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br />"
-										"You should have received a copy of the GNU General Public License along with this program.  If not, see <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>.");
+					  "This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.<br />"
+					  "This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.<br />"
+					  "You should have received a copy of the GNU General Public License along with this program.  If not, see <a href=\"http://www.gnu.org/licenses/\">http://www.gnu.org/licenses/</a>.");
 
 	QMessageBox::about(this, title, text);
 }
 
 void Clattr::showSettings() {
-	settings->exec();
+	Settings settings(this);
+	settings.exec();
 }

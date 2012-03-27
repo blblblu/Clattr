@@ -29,19 +29,18 @@ class Clattr : public QMainWindow
 public:
 	/*!
 	 * \brief Constructor
-   *
+	 *
 	 * \param parent ... default is 0
 	 */
-  explicit Clattr(QWidget *parent = 0);
+	explicit Clattr(QWidget *parent = 0);
 	/*!
 	 * \brief Destructor
-   *
+	 *
 	 */
-  ~Clattr();
+	~Clattr();
 
 private:
 	Ui::Clattr *ui;
-	Settings *settings;
 	Letter uiData();
 	void setUiData(Letter &letter);
 
@@ -49,11 +48,11 @@ private slots:
 	void exportAsTex();
 	void newFile();
 	void openLetter();
-  void saveLetterAs();
-  void showAbout();
-  void showAboutQt();
-  void showLicense();
-  void showSettings();
+	void saveLetterAs();
+	void showAbout();
+	void showAboutQt();
+	void showLicense();
+	void showSettings();
 };
 
 #endif // CLATTR_H

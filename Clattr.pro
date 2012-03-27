@@ -10,21 +10,31 @@ TARGET = Clattr
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        clattr.cpp \
-    settings.cpp \
-    letter.cpp
+SOURCES +=  src/settings.cpp \
+    src/main.cpp \
+    src/letter.cpp \
+    src/clattr.cpp
 
 HEADERS  += clattr.h \
     settings.h \
-    letter.h
+    src/settings.h \
+    src/letter.h \
+    src/clattr.h
 
-FORMS    += clattr.ui \
-    settings.ui
-
-RESOURCES +=
+RESOURCES += \
+    clattr.qrc
 
 OTHER_FILES += \
     README.markdown \
     templates/scrlttr2/template.tex \
-    templates/scrlttr2old/template.tex
+    templates/scrlttr2old/template.tex \
+    clattr_de_DE.ts \
+    clattr_de_DE.qm \
+    translations/clattr_de_DE.ts \
+    translations/clattr_de_DE.qm
+
+TRANSLATIONS    += translations/clattr_de_DE.ts
+
+FORMS += \
+    ui/settings.ui \
+    ui/clattr.ui

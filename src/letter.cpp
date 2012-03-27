@@ -5,22 +5,22 @@ Letter::Letter(){
 }
 
 Letter::Letter(
-		int newAlign,
-		QString newAttachements,
-		bool newBoolAttachements,
-		QString newClosing,
-		QDate newDate,
-		int newFontsize,
-		QString newLanguage,
-		QString newObject,
-		QString newOpening,
-		QString newPackages,
-		QString newReceiver,
-		QString newSenderAddress,
-		QString newSenderName,
-		QString newSignature,
-		QString newTemplate,
-		QString newText){
+		const int newAlign,
+		const QString newAttachements,
+		const bool newBoolAttachements,
+		const QString newClosing,
+		const QDate newDate,
+		const int newFontsize,
+		const QString newLanguage,
+		const QString newObject,
+		const QString newOpening,
+		const QString newPackages,
+		const QString newReceiver,
+		const QString newSenderAddress,
+		const QString newSenderName,
+		const QString newSignature,
+		const QString newTemplate,
+		const QString newText){
 	setContent(
 				newAlign,
 				newAttachements,
@@ -55,7 +55,7 @@ QString Letter::toTex(QString templateDir){
 
 	QFile templateFile(templateDir + "/" + chosenTemplate + "/template.tex");
 	if(!templateFile.open(QIODevice::ReadOnly | QIODevice::Text)){
-		throw 1;
+		throw 1; // could not open file
 	} else {
 		texString = templateFile.readAll();
 	}
@@ -63,9 +63,9 @@ QString Letter::toTex(QString templateDir){
 
 	// replace the dummies with the information of the given letter
 	if(chosenAlign == ALIGN_LEFT){
-		texString.replace("%<align>", "\\\\flushleft");
+		texString.replace("%<align>", "\\flushleft");
 	} else if(chosenAlign == ALIGN_RIGHT) {
-		texString.replace("%<align>", "\\\\flushright");
+		texString.replace("%<align>", "\\flushright");
 	}
 	if(chosenBoolAttachements){
 		texString.replace("%<boolattachement>", "");
@@ -88,22 +88,22 @@ QString Letter::toTex(QString templateDir){
 }
 
 void Letter::setContent(
-		int newAlign,
-		QString newAttachements,
-		bool newBoolAttachements,
-		QString newClosing,
-		QDate newDate,
-		int newFontsize,
-		QString newLanguage,
-		QString newObject,
-		QString newOpening,
-		QString newPackages,
-		QString newReceiver,
-		QString newSenderAddress,
-		QString newSenderName,
-		QString newSignature,
-		QString newTemplate,
-		QString newText){
+		const int newAlign,
+		const QString newAttachements,
+		const bool newBoolAttachements,
+		const QString newClosing,
+		const QDate newDate,
+		const int newFontsize,
+		const QString newLanguage,
+		const QString newObject,
+		const QString newOpening,
+		const QString newPackages,
+		const QString newReceiver,
+		const QString newSenderAddress,
+		const QString newSenderName,
+		const QString newSignature,
+		const QString newTemplate,
+		const QString newText){
 	chosenAlign            = newAlign;
 	chosenAttachements     = newAttachements;
 	chosenBoolAttachements = newBoolAttachements;
@@ -123,27 +123,35 @@ void Letter::setContent(
 }
 
 QDataStream &operator<<(QDataStream &out, const Letter &letter){
-	out << letter.chosenAlign
-			<< letter.chosenAttachements
-			<< letter.chosenBoolAttachements
-			<< letter.chosenClosing
-			<< letter.chosenDate
-			<< letter.chosenFontsize
-			<< letter.chosenLanguage
-			<< letter.chosenObject
-			<< letter.chosenOpening
-			<< letter.chosenPackages
-			<< letter.chosenReceiver
-			<< letter.chosenSenderAddress
-			<< letter.chosenSenderName
-			<< letter.chosenSignature
-			<< letter.chosenTemplate
-			<< letter.chosenText;
+	out << (quint32)0xAB6C9D5 // magic
+		<< letter.chosenAlign
+		<< letter.chosenAttachements
+		<< letter.chosenBoolAttachements
+		<< letter.chosenClosing
+		<< letter.chosenDate
+		<< letter.chosenFontsize
+		<< letter.chosenLanguage
+		<< letter.chosenObject
+		<< letter.chosenOpening
+		<< letter.chosenPackages
+		<< letter.chosenReceiver
+		<< letter.chosenSenderAddress
+		<< letter.chosenSenderName
+		<< letter.chosenSignature
+		<< letter.chosenTemplate
+		<< letter.chosenText;
 
 	return out;
 }
 
 QDataStream &operator>>(QDataStream &in, Letter &letter){
+	quint32 magic;
+
+	in >> magic;
+	if(magic != 0xAB6C9D5){
+		throw 2; // bad file
+	}
+
 	int newAlign;
 	QString newAttachements;
 	bool newBoolAttachements;
@@ -162,21 +170,21 @@ QDataStream &operator>>(QDataStream &in, Letter &letter){
 	QString newText;
 
 	in  >> newAlign
-			>> newAttachements
-			>> newBoolAttachements
-			>> newClosing
-			>> newDate
-			>> newFontsize
-			>> newLanguage
-			>> newObject
-			>> newOpening
-			>> newPackages
-			>> newReceiver
-			>> newSenderAddress
-			>> newSenderName
-			>> newSignature
-			>> newTemplate
-			>> newText;
+		>> newAttachements
+		>> newBoolAttachements
+		>> newClosing
+		>> newDate
+		>> newFontsize
+		>> newLanguage
+		>> newObject
+		>> newOpening
+		>> newPackages
+		>> newReceiver
+		>> newSenderAddress
+		>> newSenderName
+		>> newSignature
+		>> newTemplate
+		>> newText;
 
 	letter.setContent(
 				newAlign,

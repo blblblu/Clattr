@@ -43,22 +43,22 @@ public:
 	 * \param newText ...
 	 */
 	Letter(
-			int newAlign,
-			QString newAttachements,
-			bool newBoolAttachements,
-			QString newClosing,
-			QDate newDate,
-			int newFontsize,
-			QString newLanguage,
-			QString newObject,
-			QString newOpening,
-			QString newPackages,
-			QString newReceiver,
-			QString newSenderAddress,
-			QString newSenderName,
-			QString newSignature,
-			QString newTemplate,
-			QString newText);
+			const int newAlign,
+			const QString newAttachements,
+			const bool newBoolAttachements,
+			const QString newClosing,
+			const QDate newDate,
+			const int newFontsize,
+			const QString newLanguage,
+			const QString newObject,
+			const QString newOpening,
+			const QString newPackages,
+			const QString newReceiver,
+			const QString newSenderAddress,
+			const QString newSenderName,
+			const QString newSignature,
+			const QString newTemplate,
+			const QString newText);
 
 	/*!
 	 * \brief set whole content at once
@@ -82,22 +82,22 @@ public:
 	 * \return void
 	 */
 	void setContent(
-			int newAlign,
-			QString newAttachements,
-			bool newBoolAttachements,
-			QString newClosing,
-			QDate newDate,
-			int newFontsize,
-			QString newLanguage,
-			QString newObject,
-			QString newOpening,
-			QString newPackages,
-			QString newReceiver,
-			QString newSenderAddress,
-			QString newSenderName,
-			QString newSignature,
-			QString newTemplate,
-			QString newText);
+			const int newAlign,
+			const QString newAttachements,
+			const bool newBoolAttachements,
+			const QString newClosing,
+			const QDate newDate,
+			const int newFontsize,
+			const QString newLanguage,
+			const QString newObject,
+			const QString newOpening,
+			const QString newPackages,
+			const QString newReceiver,
+			const QString newSenderAddress,
+			const QString newSenderName,
+			const QString newSignature,
+			const QString newTemplate,
+			const QString newText);
 
 	/*!
 	 * \brief creates a LaTeX document

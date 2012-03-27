@@ -9,7 +9,7 @@ Settings::Settings(QWidget *parent) :
 	connect(this, SIGNAL(accepted()), this, SLOT(acceptSettings()));
 	connect(this, SIGNAL(rejected()), this, SLOT(rejectSettings()));
 
-	qSettings = new QSettings("Sebastian Schulz", "Clattr");
+	qSettings = new QSettings();
 
 	ui->inputLatexCommand->setText(this->latexCommand());
 }
