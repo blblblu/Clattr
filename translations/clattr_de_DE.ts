@@ -216,7 +216,7 @@
     </message>
     <message>
         <location filename="../ui/clattr.ui" line="511"/>
-        <location filename="../src/clattr.cpp" line="154"/>
+        <location filename="../src/clattr.cpp" line="151"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
@@ -226,96 +226,96 @@
         <translation>Einstellungen...</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="71"/>
+        <location filename="../src/clattr.cpp" line="68"/>
         <source>Export letter as *.tex</source>
         <translation>Als *.tex-Datei exportieren</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="71"/>
+        <location filename="../src/clattr.cpp" line="68"/>
         <source>TeX document (*.tex)</source>
         <translation>TeX-Datei (*.tex)</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="80"/>
+        <location filename="../src/clattr.cpp" line="77"/>
         <source>Run LaTeX</source>
         <translation>LaTeX ausführen</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="80"/>
+        <location filename="../src/clattr.cpp" line="77"/>
         <source>Do you want to run LaTeX?</source>
         <translation>Möchten sie LaTeX ausführen?</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="82"/>
+        <location filename="../src/clattr.cpp" line="79"/>
         <source>Choose output directory</source>
         <translation>Ausgabe-Ordner auswählen</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="85"/>
-        <location filename="../src/clattr.cpp" line="92"/>
-        <location filename="../src/clattr.cpp" line="97"/>
-        <location filename="../src/clattr.cpp" line="118"/>
+        <location filename="../src/clattr.cpp" line="82"/>
+        <location filename="../src/clattr.cpp" line="89"/>
+        <location filename="../src/clattr.cpp" line="94"/>
+        <location filename="../src/clattr.cpp" line="115"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="85"/>
+        <location filename="../src/clattr.cpp" line="82"/>
         <source>Couldn&apos;t create output file</source>
         <translation>Ausgabe-Datei konnte nicht erstellt werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="92"/>
+        <location filename="../src/clattr.cpp" line="89"/>
         <source>Couldn&apos;t open template</source>
         <translation>Vorlage konnte nicht geöffnet werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="97"/>
+        <location filename="../src/clattr.cpp" line="94"/>
         <source>*.tex file couldn&apos;t be saved</source>
         <translation>*.tex-Datei konnte nicht gespeichert werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="107"/>
+        <location filename="../src/clattr.cpp" line="104"/>
         <source>Open letter</source>
         <translation>Brief öffnen</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="107"/>
-        <location filename="../src/clattr.cpp" line="131"/>
+        <location filename="../src/clattr.cpp" line="104"/>
+        <location filename="../src/clattr.cpp" line="128"/>
         <source>Clattr files (*.cltr)</source>
         <translation>Clattr-Dateien (*.cltr)</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="118"/>
+        <location filename="../src/clattr.cpp" line="115"/>
         <source>Bad file type</source>
         <translation>Falscher Dateityp</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="126"/>
+        <location filename="../src/clattr.cpp" line="123"/>
         <source>Error: Chosen file not found</source>
         <translation>Fehler: Ausgewählte Datei konnte nicht geöffnet werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="131"/>
+        <location filename="../src/clattr.cpp" line="128"/>
         <source>Save letter as</source>
         <translation>Brief speichern unter</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="138"/>
+        <location filename="../src/clattr.cpp" line="135"/>
         <source>Error: file couldn&apos;t be saved</source>
         <translation>Fehler: Datei konnte nicht gespeichert werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="143"/>
+        <location filename="../src/clattr.cpp" line="140"/>
         <source>About Clattr</source>
         <translation>Über Clattr</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="144"/>
+        <location filename="../src/clattr.cpp" line="141"/>
         <source>Easily create LaTeX letters&lt;br /&gt;(c) 2012 Sebastian Schulz</source>
         <translation>Einfach LaTeX-Briefe erstellen&lt;br /&gt;(c) 2012 Sebastian Schulz</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="155"/>
+        <location filename="../src/clattr.cpp" line="152"/>
         <source>Copyright (C) 2012  Sebastian Schulz&lt;br /&gt;This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.&lt;br /&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.&lt;br /&gt;You should have received a copy of the GNU General Public License along with this program.  If not, see &lt;a href=&quot;http://www.gnu.org/licenses/&quot;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.</source>
         <translation type="unfinished"></translation>
     </message>

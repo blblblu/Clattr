@@ -15,8 +15,7 @@ SOURCES +=  src/settings.cpp \
     src/letter.cpp \
     src/clattr.cpp
 
-HEADERS  += clattr.h \
-    settings.h \
+HEADERS  += \
     src/settings.h \
     src/letter.h \
     src/clattr.h
@@ -28,7 +27,6 @@ OTHER_FILES += \
     README.markdown \
     templates/scrlttr2/template.tex \
     templates/scrlttr2old/template.tex \
-    clattr_de_DE.ts \
     clattr_de_DE.qm \
     translations/clattr_de_DE.ts \
     translations/clattr_de_DE.qm
