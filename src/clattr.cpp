@@ -7,6 +7,11 @@ Clattr::Clattr(QWidget *parent) :
 {
 	ui->setupUi(this);
 
+	latexWorker = new LatexWorker;
+	latexThread = new QThread;
+	latexWorker->moveToThread(latexThread);
+	latexThread->start();
+
 	Letter letter;
 
 	setUiData(letter);
@@ -77,9 +82,17 @@ void Clattr::exportAsTex() {
 			int reply = QMessageBox::question(this, tr("Run LaTeX"), tr("Do you want to run LaTeX?"), QMessageBox::Yes, QMessageBox::No);
 			if(reply == QMessageBox::Yes){
 				QString outputDirectory = QFileDialog::getExistingDirectory(this, tr("Choose output directory"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation));
-				int fail = system(QSettings().value("latex/latexcommand").toString().toAscii() + " --halt-on-error --output-directory=" + outputDirectory.toAscii() + " " + pathToFile.toAscii());
-				if(fail){
-					QMessageBox::warning(this, tr("Error"), tr("Couldn't create output file"));
+
+				//				int fail = system(QSettings().value("latex/latexcommand", "pdflatex").toString().toAscii() + " --halt-on-error --output-directory=" + outputDirectory.toAscii() + " " + pathToFile.toAscii());
+				//				if(fail){
+				//					QMessageBox::warning(this, tr("Error"), tr("Couldn't create output file"));
+				//				}
+
+				if(!latexWorker->isRunning()){
+					latexWorker->setJobData(outputDirectory, pathToFile);
+					QMetaObject::invokeMethod(latexWorker, "doWork", Qt::QueuedConnection);
+				} else {
+					QMessageBox::warning(this, tr("Error"), tr("Another thread is already running"));
 				}
 			}
 			// catch exceptions thrown by Letter::toTex()

@@ -11,7 +11,9 @@
 #include <QMessageBox>
 #include <QtDebug>
 #include <QTextStream>
+#include <QThread>
 
+#include "latexworker.h"
 #include "letter.h"
 #include "settings.h"
 
@@ -41,6 +43,8 @@ public:
 
 private:
 	Ui::Clattr *ui;
+	LatexWorker * latexWorker;
+	QThread *latexThread;
 	Letter uiData();
 	void setUiData(Letter &letter);
 

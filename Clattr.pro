@@ -13,12 +13,14 @@ TEMPLATE = app
 SOURCES +=  src/settings.cpp \
     src/main.cpp \
     src/letter.cpp \
-    src/clattr.cpp
+    src/clattr.cpp \
+    src/latexworker.cpp
 
 HEADERS  += \
     src/settings.h \
     src/letter.h \
-    src/clattr.h
+    src/clattr.h \
+    src/latexworker.h
 
 RESOURCES += \
     clattr.qrc
