@@ -4,10 +4,16 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QMAKE_LFLAGS += -static-libgcc
+
+QT       += core gui widgets
 
 TARGET = Clattr
 TEMPLATE = app
+
+FORMS += \
+    ui/settings.ui \
+    ui/clattr.ui
 
 
 SOURCES +=  src/settings.cpp \
@@ -34,7 +40,3 @@ OTHER_FILES += \
     translations/clattr_de_DE.qm
 
 TRANSLATIONS    += translations/clattr_de_DE.ts
-
-FORMS += \
-    ui/settings.ui \
-    ui/clattr.ui

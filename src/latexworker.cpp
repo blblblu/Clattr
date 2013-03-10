@@ -15,7 +15,7 @@ bool LatexWorker::isRunning(){
 void LatexWorker::doWork(){
 	nowRunning = true;
 
-	int fail = system(QSettings().value("latex/latexcommand", "pdflatex").toString().toAscii() + " --halt-on-error --output-directory=" + outputDirectory.toAscii() + " " + pathToFile.toAscii());
+    int fail = system(QSettings().value("latex/latexcommand", "pdflatex").toString().toUtf8() + " --halt-on-error --output-directory=" + outputDirectory.toUtf8() + " " + pathToFile.toUtf8());
 
 	outputDirectory = "";
 	pathToFile = "";

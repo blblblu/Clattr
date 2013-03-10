@@ -16,18 +16,27 @@ Clattr::Clattr(QWidget *parent) :
 
 	setUiData(letter);
 
-	connect(ui->actionAbout, SIGNAL(triggered()), this, SLOT(showAbout()));
-	connect(ui->actionAboutQt, SIGNAL(triggered()), this, SLOT(showAboutQt()));
+	connect(ui->actionAbout,       SIGNAL(triggered()), this, SLOT(showAbout()));
+	connect(ui->actionAboutQt,     SIGNAL(triggered()), this, SLOT(showAboutQt()));
 	connect(ui->actionExportAsTex, SIGNAL(triggered()), this, SLOT(exportAsTex()));
-	connect(ui->actionLicense, SIGNAL(triggered()), this, SLOT(showLicense()));
-	connect(ui->actionNew, SIGNAL(triggered()), this, SLOT(newFile()));
-	connect(ui->actionOpen, SIGNAL(triggered()), this, SLOT(openLetter()));
-	connect(ui->actionSaveAs, SIGNAL(triggered()), this, SLOT(saveLetterAs()));
-	connect(ui->actionSettings, SIGNAL(triggered()),this, SLOT(showSettings()));
+	connect(ui->actionLicense,     SIGNAL(triggered()), this, SLOT(showLicense()));
+	connect(ui->actionNew,         SIGNAL(triggered()), this, SLOT(newFile()));
+	connect(ui->actionOpen,        SIGNAL(triggered()), this, SLOT(openLetter()));
+	connect(ui->actionSaveAs,      SIGNAL(triggered()), this, SLOT(saveLetterAs()));
+	connect(ui->actionSettings,    SIGNAL(triggered()), this, SLOT(showSettings()));
 }
 
 Clattr::~Clattr() {
 	delete ui;
+}
+
+void Clattr::closeEvent(QCloseEvent *event){
+	int reply = QMessageBox::question(this, tr("Close Clattr?"), tr("Are you sure to quit?"), QMessageBox::Yes, QMessageBox::No);
+	if(reply == QMessageBox::Yes){
+		event->accept();
+	} else {
+		event->ignore();
+	}
 }
 
 Letter Clattr::uiData() {
@@ -70,7 +79,7 @@ void Clattr::setUiData(Letter &letter) {
 }
 
 void Clattr::exportAsTex() {
-	QString pathToFile = QFileDialog::getSaveFileName(this, tr("Export letter as *.tex"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("TeX document (*.tex)"));
+    QString pathToFile = QFileDialog::getSaveFileName(this, tr("Export letter as *.tex"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), tr("TeX document (*.tex)"));
 	QFile file(pathToFile);
 	if(file.open(QIODevice::WriteOnly | QIODevice::Text)) {
 		QTextStream out(&file);
@@ -81,7 +90,7 @@ void Clattr::exportAsTex() {
 			// ask user wheter he wants to run LaTeX
 			int reply = QMessageBox::question(this, tr("Run LaTeX"), tr("Do you want to run LaTeX?"), QMessageBox::Yes, QMessageBox::No);
 			if(reply == QMessageBox::Yes){
-				QString outputDirectory = QFileDialog::getExistingDirectory(this, tr("Choose output directory"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation));
+                QString outputDirectory = QFileDialog::getExistingDirectory(this, tr("Choose output directory"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
 
 				//				int fail = system(QSettings().value("latex/latexcommand", "pdflatex").toString().toAscii() + " --halt-on-error --output-directory=" + outputDirectory.toAscii() + " " + pathToFile.toAscii());
 				//				if(fail){
@@ -114,7 +123,7 @@ void Clattr::newFile(){
 }
 
 void Clattr::openLetter() {
-	QString pathToFile = QFileDialog::getOpenFileName(this, tr("Open letter"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Clattr files (*.cltr)"));
+    QString pathToFile = QFileDialog::getOpenFileName(this, tr("Open letter"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), tr("Clattr files (*.cltr)"));
 	QFile file(pathToFile);
 	if(file.open(QIODevice::ReadOnly)) {
 		QDataStream in(&file);
@@ -133,12 +142,12 @@ void Clattr::openLetter() {
 		file.close();
 		setUiData(letter);
 	} else {
-		qWarning() << tr("Error: Chosen file not found").toAscii();
+        qWarning() << tr("Error: Chosen file not found").toUtf8();
 	}
 }
 
 void Clattr::saveLetterAs() {
-	QString pathToFile = QFileDialog::getSaveFileName(this, tr("Save letter as"), QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation), tr("Clattr files (*.cltr)"));
+    QString pathToFile = QFileDialog::getSaveFileName(this, tr("Save letter as"), QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation), tr("Clattr files (*.cltr)"));
 	QFile file(pathToFile);
 	if(file.open(QIODevice::WriteOnly)) {
 		QDataStream out(&file);

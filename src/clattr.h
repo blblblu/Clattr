@@ -3,12 +3,12 @@
 
 #include <QApplication>
 #include <QDataStream>
-#include <QDesktopServices>
 #include <QFile>
 #include <QFileDialog>
 #include <QIODevice>
 #include <QMainWindow>
 #include <QMessageBox>
+#include <QStandardPaths>
 #include <QtDebug>
 #include <QTextStream>
 #include <QThread>
@@ -45,6 +45,7 @@ private:
 	Ui::Clattr *ui;
 	LatexWorker * latexWorker;
 	QThread *latexThread;
+	void closeEvent(QCloseEvent *event);
 	Letter uiData();
 	void setUiData(Letter &letter);
 
