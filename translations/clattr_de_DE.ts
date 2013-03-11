@@ -216,7 +216,7 @@
     </message>
     <message>
         <location filename="../ui/clattr.ui" line="511"/>
-        <location filename="../src/clattr.cpp" line="164"/>
+        <location filename="../src/clattr.cpp" line="173"/>
         <source>License</source>
         <translation>Lizenz</translation>
     </message>
@@ -226,35 +226,35 @@
         <translation>Einstellungen...</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="73"/>
+        <location filename="../src/clattr.cpp" line="82"/>
         <source>Export letter as *.tex</source>
         <translation>Als *.tex-Datei exportieren</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="73"/>
+        <location filename="../src/clattr.cpp" line="82"/>
         <source>TeX document (*.tex)</source>
         <translation>TeX-Datei (*.tex)</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="82"/>
+        <location filename="../src/clattr.cpp" line="91"/>
         <source>Run LaTeX</source>
         <translation>LaTeX ausführen</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="82"/>
+        <location filename="../src/clattr.cpp" line="91"/>
         <source>Do you want to run LaTeX?</source>
         <translation>Möchten sie LaTeX ausführen?</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="84"/>
+        <location filename="../src/clattr.cpp" line="93"/>
         <source>Choose output directory</source>
         <translation>Ausgabe-Ordner auswählen</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="95"/>
-        <location filename="../src/clattr.cpp" line="102"/>
-        <location filename="../src/clattr.cpp" line="107"/>
-        <location filename="../src/clattr.cpp" line="128"/>
+        <location filename="../src/clattr.cpp" line="104"/>
+        <location filename="../src/clattr.cpp" line="111"/>
+        <location filename="../src/clattr.cpp" line="116"/>
+        <location filename="../src/clattr.cpp" line="137"/>
         <source>Error</source>
         <translation>Fehler</translation>
     </message>
@@ -263,63 +263,73 @@
         <translation type="obsolete">Ausgabe-Datei konnte nicht erstellt werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="95"/>
-        <source>Another thread is already running</source>
-        <translation type="unfinished">Es läuft bereits ein Thread</translation>
+        <location filename="../src/clattr.cpp" line="34"/>
+        <source>Close Clattr?</source>
+        <translation>Clattr schließen?</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="102"/>
+        <location filename="../src/clattr.cpp" line="34"/>
+        <source>Are you sure to quit?</source>
+        <translation>Sind sie sicher, dass sie Clattr schließen möchten?</translation>
+    </message>
+    <message>
+        <location filename="../src/clattr.cpp" line="104"/>
+        <source>Another thread is already running</source>
+        <translation>Es läuft bereits ein Thread</translation>
+    </message>
+    <message>
+        <location filename="../src/clattr.cpp" line="111"/>
         <source>Couldn&apos;t open template</source>
         <translation>Vorlage konnte nicht geöffnet werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="107"/>
+        <location filename="../src/clattr.cpp" line="116"/>
         <source>*.tex file couldn&apos;t be saved</source>
         <translation>*.tex-Datei konnte nicht gespeichert werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="117"/>
+        <location filename="../src/clattr.cpp" line="126"/>
         <source>Open letter</source>
         <translation>Brief öffnen</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="117"/>
-        <location filename="../src/clattr.cpp" line="141"/>
+        <location filename="../src/clattr.cpp" line="126"/>
+        <location filename="../src/clattr.cpp" line="150"/>
         <source>Clattr files (*.cltr)</source>
         <translation>Clattr-Dateien (*.cltr)</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="128"/>
+        <location filename="../src/clattr.cpp" line="137"/>
         <source>Bad file type</source>
         <translation>Falscher Dateityp</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="136"/>
+        <location filename="../src/clattr.cpp" line="145"/>
         <source>Error: Chosen file not found</source>
         <translation>Fehler: Ausgewählte Datei konnte nicht geöffnet werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="141"/>
+        <location filename="../src/clattr.cpp" line="150"/>
         <source>Save letter as</source>
         <translation>Brief speichern unter</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="148"/>
+        <location filename="../src/clattr.cpp" line="157"/>
         <source>Error: file couldn&apos;t be saved</source>
         <translation>Fehler: Datei konnte nicht gespeichert werden</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="153"/>
+        <location filename="../src/clattr.cpp" line="162"/>
         <source>About Clattr</source>
         <translation>Über Clattr</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="154"/>
+        <location filename="../src/clattr.cpp" line="163"/>
         <source>Easily create LaTeX letters&lt;br /&gt;(c) 2012 Sebastian Schulz</source>
         <translation>Einfach LaTeX-Briefe erstellen&lt;br /&gt;(c) 2012 Sebastian Schulz</translation>
     </message>
     <message>
-        <location filename="../src/clattr.cpp" line="165"/>
+        <location filename="../src/clattr.cpp" line="174"/>
         <source>Copyright (C) 2012  Sebastian Schulz&lt;br /&gt;This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.&lt;br /&gt;This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.&lt;br /&gt;You should have received a copy of the GNU General Public License along with this program.  If not, see &lt;a href=&quot;http://www.gnu.org/licenses/&quot;&gt;http://www.gnu.org/licenses/&lt;/a&gt;.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -337,7 +347,7 @@
         <translation>LaTeX-Einstellungen</translation>
     </message>
     <message>
-        <location filename="../ui/settings.ui" line="28"/>
+        <location filename="../ui/settings.ui" line="31"/>
         <source>LaTeX command</source>
         <translation>LaTeX-Befehl</translation>
     </message>
